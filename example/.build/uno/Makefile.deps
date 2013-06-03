@@ -1,0 +1,28 @@
+
+
+
+
+
+
+
+
+	
+
+
+
+.build/uno/RCArduinoFastLib/RCArduinoFastLib.d : lib/RCArduinoFastLib/RCArduinoFastLib.cpp
+	@mkdir -p .build/uno/RCArduinoFastLib
+	@/usr/bin/avr-gcc -mmcu=atmega328p -ffunction-sections -fdata-sections -g -Os -w -DF_CPU=16000000L -DARDUINO=100 -I/usr/share/arduino/hardware/arduino/cores/arduino -I/usr/share/arduino/hardware/arduino/variants/standard -I/usr/share/arduino/hardware/arduino/cores/arduino -Ilib/RCArduinoFastLib -Ilib/PinChangeInt -Ilib/PinChangeInt/Examples -Ilib/PinChangeInt/Examples/ByteBuffer -Ilib/PinChangeInt/Examples/GetPSTR -Ilib/PinChangeInt/Examples/PinChangeIntSpeedTest -Ilib/PinChangeInt/Examples/PinChangeIntTest2 -Ilib/PinChangeInt/Examples/PinChangeIntTest -Ilib/PinChangeInt/Examples/PinChangeIntExample -I/usr/share/arduino/libraries/Wire -I/usr/share/arduino/libraries/Wire/utility -I/usr/share/arduino/libraries/SD -I/usr/share/arduino/libraries/SD/utility -I/usr/share/arduino/libraries/LiquidCrystal -I/usr/share/arduino/libraries/SoftwareSerial -I/usr/share/arduino/libraries/Servo -I/usr/share/arduino/libraries/Ethernet -I/usr/share/arduino/libraries/Ethernet/utility -I/usr/share/arduino/libraries/Firmata -I/usr/share/arduino/libraries/EEPROM -I/usr/share/arduino/libraries/SPI -I/usr/share/arduino/libraries/Stepper  -MM $^ > $@
+	
+	@printf ".build/uno/RCArduinoFastLib/RCArduinoFastLib.d .build/uno/RCArduinoFastLib/" | cat - $@ > $@~ && mv $@~ $@
+
+
+
+.build/uno/RCArduinoFastLib/dependencies.d : .build/uno/RCArduinoFastLib/RCArduinoFastLib.d
+	@echo [96mScanning dependencies of RCArduinoFastLib[0m
+	@mkdir -p .build/uno/RCArduinoFastLib
+	@cat $^ > $@;
+
+all : .build/uno/RCArduinoFastLib/dependencies.d
+	@true
+

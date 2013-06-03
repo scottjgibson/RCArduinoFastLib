@@ -167,8 +167,9 @@ void loop()
   if(bUpdateFlags & AUX_FLAG)
   {
    CRCArduinoFastServos::writeMicroseconds(SERVO_AUX,unAuxIn);
-   }
+  }
 
+  delay(500);
   bUpdateFlags = 0;
 }
 
