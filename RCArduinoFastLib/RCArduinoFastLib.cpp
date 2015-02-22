@@ -330,7 +330,7 @@ void CRCArduinoFastServos::begin()
 
     // Initilialise Timer1
     TCCR1A = 0;             // normal counting mode
-    TCCR1B = 2;     // set prescaler of 64 = 1 tick = 4us
+    TCCR1B = 2;     // set prescaler of 8 = 1 tick = 0.5us
 
     // ENABLE TIMER1 OCR1A INTERRUPT to enabled the first bank (A) of ten servos
     TIFR1 |= _BV(OCF1A);     // clear any pending interrupts;
